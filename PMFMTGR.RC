@@ -1,0 +1,117 @@
+/*----------------------------------------------------------
+   PMFORMAT.C -- Ein Formatierprogramm fÅr Disketten
+
+   Modul 7a: Resource-Datei deutsch
+
+   Version 1.1 - 15.4.1991
+   Version 1.2 - 9.6.1991
+   Version 1.3 - 9.11.1991  > neue Dialog-Box ID_DISKSTAT;
+   Version 1.31- 9.2.1992
+   Version 2.0 - 20.9.1992  > OS/2 2.0-Version fÅr C Set/2
+                              neue Dialogbox fÅr Hauptfenster
+                              neue Textstrings fÅr FORMAT-Button
+                              neue Textstrings fÅr Titlezeile
+   Version 2.11- 8.4.1994   > Korrigierte VersionsprÅfung
+   Version 2.13- 28.7.1995  > Korrektur Schreibfehler
+   Version 2.15- 9.3.2000   > Entfernung des Registrierdialogs
+   Version 2.16 - 4.5.2000  > DosSetCurrentDir wegen Help-Datei
+  ----------------------------------------------------------*/
+#define INCL_PM
+
+#include <OS2.H>
+#include "PMFORMAT.H"
+#include "PMFMTHLP.H"
+
+POINTER ID_ICON pmformat.ico
+
+RCINCLUDE pmfmtgr.dlg
+
+HELPTABLE IDH_MAIN
+    {
+    HELPITEM ID_FORMAT,   IDH_SUBTAB1, PANEL_MAIN
+    HELPITEM ID_DISKSTAT, IDH_SUBTAB2, PANEL_DSKDATA
+    HELPITEM ID_OPTIONS,  IDH_SUBTAB3, PANEL_MAIN
+    HELPITEM ID_WARNING,  IDH_SUBTAB4, PANEL_MAIN
+    }
+
+HELPSUBTABLE IDH_SUBTAB1
+    {
+    HELPSUBITEM DID_LW_A,    PANEL_DRIVE
+    HELPSUBITEM DID_LW_B,    PANEL_DRIVE
+    HELPSUBITEM DID_LW_SPIN, PANEL_DRIVE
+    HELPSUBITEM DID_DD,      PANEL_TYPE
+    HELPSUBITEM DID_HD,      PANEL_TYPE
+    HELPSUBITEM DID_ED,      PANEL_TYPE
+    HELPSUBITEM DID_SP,      PANEL_TYPE
+    HELPSUBITEM DID_FORMAT,  PANEL_FORMAT
+    HELPSUBITEM DID_ENTRY,   PANEL_LABEL
+    }
+
+HELPSUBTABLE IDH_SUBTAB2
+    {
+    }
+
+HELPSUBTABLE IDH_SUBTAB3
+    {
+    HELPSUBITEM DID_OK,      PANEL_OPTIONS
+    HELPSUBITEM DID_CANCEL,  PANEL_OPTIONS
+    HELPSUBITEM DID_STD,     PANEL_BTNTYPE
+    HELPSUBITEM DID_EXT,     PANEL_BTNTYPE
+    HELPSUBITEM DID_CHECK,   PANEL_CHECK
+    }
+
+HELPSUBTABLE IDH_SUBTAB4
+    {
+    HELPSUBITEM DID_OK,      PANEL_WARNING
+    HELPSUBITEM DID_CANCEL,  PANEL_WARNING
+    HELPSUBITEM DID_WFORMAT, PANEL_FMTTYPE
+    HELPSUBITEM DID_WQUICK,  PANEL_FMTTYPE
+    HELPSUBITEM DID_WBOOTS,  PANEL_FMTTYPE
+    HELPSUBITEM DID_WARN,    PANEL_WARNOFF
+    }
+
+MENU IDM_HELPMENU LOADONCALL MOVEABLE DISCARDABLE
+    {
+    MENUITEM "Hilfe~index",             SC_HELPINDEX,    MIS_SYSCOMMAND
+    MENUITEM "~Erweiterte Hilfe",       SC_HELPEXTENDED, MIS_SYSCOMMAND
+    MENUITEM "Hilfe fÅr ~Hilfefunktion",IDM_HFH,         MIS_HELP
+    }
+
+STRINGTABLE
+    {
+    IDS_ERROR_INV_DRV_TYPE  "ungÅltiger Laufwerkstyp"
+    IDS_ERROR_INCOMP_TYPE   "inkompatibler Laufwerkstyp"
+    IDS_ERROR_UNUSABLE      "Diskette nicht verwendbar"
+
+    IDS_ALREADY_FORMATTED   "Diskette ist bereits formatiert und hat den Namen %1. "
+    IDS_NONAME_FORMATTED    "Diskette ist bereits formatiert und hat keinen Namen. "
+    IDS_DISK_ID             "Die DatentrÑgerkennung ist %2:%3. "
+    IDS_QST_FORMAT          "Trotzdem formatieren?"
+    IDS_INVALID_CHARACTER   "Name enthÑlt ungÅltiges Zeichen"
+
+    IDS_WRONGFMT            "Diskette hat bereits ein anderes als das angewÑhlte Format."
+
+    IDS_TRACKNUM            "Formatiere Spur %1 von %2"
+    IDS_LABEL               "Diskettenname:"
+    IDS_SWENTRY             "Disketten formatieren"
+
+    IDS_HELP                "~Hilfe"
+    IDS_ABOUT               "~Produktinformation"
+    IDS_OPTION              "~Optionen"
+
+    IDS_NAME                "Name der Diskette: "
+    IDS_NONAME              "Die Diskette hat keinen Namen"
+
+    IDS_BTN_FMT             "~formatieren"
+    IDS_BTN_STOP            "~STOP"
+
+    IDS_TITLE_STD           "Formatieren"
+    IDS_TITLE_EXT           "formatiere:"
+
+    IDS_HELPWINDOWTITLE     "Hilfe fÅr PMFORMAT"
+    IDS_HELPLIBRARYNAME     "PMFORMAT.HLP"
+    IDS_NOHELP              "Die Hilfefunktion ist nicht verfÅgbar. Die Hilfedatei kann nicht gefunden werden."
+
+    IDS_VERSION             "Diese Version von OS/2 wird nicht unterstÅtzt. Es ist mindestens Version 2.1 erforderlich"
+    }
+

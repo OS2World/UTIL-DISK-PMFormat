@@ -1,0 +1,118 @@
+DLGINCLUDE 1 "pmformat.h"
+
+DLGTEMPLATE ID_DISKSTAT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Diskette data", ID_DISKSTAT, 30, 3, 220, 100, WS_VISIBLE,
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LTEXT           "", DID_VOLN, 10, 90, 200, 8
+        LTEXT           "Volume Serial Number is", -1, 10, 80, 100, 8
+        LTEXT           "", DID_NUMBER, 115, 80, 45, 8
+        RTEXT           "", DID_SUM_BYTE, 5, 70, 40, 8
+        LTEXT           "bytes total disk space", -1, 55, 70, 160, 8
+        RTEXT           "", DID_AVL_BYTE, 5, 60, 40, 8
+        LTEXT           "bytes available on disk", -1, 55, 60, 160, 8
+        RTEXT           "", DID_ERR_BYTE, 5, 50, 40, 8, NOT WS_VISIBLE
+        LTEXT           "bytes in bad sectors", DID_ERR_TEXT, 55, 50, 160, 8,
+                        NOT WS_VISIBLE
+        RTEXT           "", DID_BPC, 5, 40, 40, 8
+        LTEXT           "bytes in each allocation unit", -1, 55, 40, 160, 8
+        RTEXT           "", DID_SUM_UNIT, 5, 30, 40, 8
+        LTEXT           "allocation units", -1, 55, 30, 160, 8
+        RTEXT           "", DID_AVL_UNIT, 5, 20, 40, 8
+        LTEXT           "available allocation units", -1, 55, 20, 160, 8
+        DEFPUSHBUTTON   "OK", DID_OK, 10, 5, 60, 12, WS_GROUP
+        PUSHBUTTON      "Help", DID_HELP, 170, 5, 40, 14, BS_HELP |
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP
+    END
+END
+
+DLGTEMPLATE ID_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Produktinformation", ID_ABOUT, 0, 0, 200, 130,
+            FS_NOBYTEALIGN | FS_MOUSEALIGN | WS_VISIBLE, FCF_SYSMENU |
+            FCF_TITLEBAR
+    BEGIN
+        CONTROL         "", -1, 38, 36, 130, 50, WC_STATIC, SS_FGNDRECT |
+                        WS_VISIBLE
+        CONTROL         "", -1, 35, 39, 130, 50, WC_STATIC, SS_FGNDRECT |
+                        WS_VISIBLE
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00E3E396L
+        CONTROL         "", -1, 35, 39, 130, 50, WC_STATIC, SS_FGNDFRAME |
+                        WS_VISIBLE
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+                        PRESPARAMS PP_BORDERCOLOR, 0x00800000L
+        ICON            ID_ICON, -1, 90, 100, 20, 16
+        CTEXT           "PM diskette-", -1, 36, 74, 128, 8,
+                        DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00E3E396L
+        CTEXT           "formatting program", -1, 36, 64, 128, 8,
+                        DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00E3E396L
+        CTEXT           "Version 2.16", -1, 36, 42, 128, 8, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00646464L
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00E3E396L
+        CTEXT           "Copyright (C) noller & breining software, 1995...2000",
+                        -1, 3, 29, 194, 8, DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00808080L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "Ok", DID_OK, 80, 10, 40, 13
+    END
+END
+
+DLGTEMPLATE ID_FORMAT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Format Disks", ID_FORMAT, 8, 8, 140, 100, FS_NOBYTEALIGN |
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | FCF_MINBUTTON
+    BEGIN
+        GROUPBOX        "Disk", FIRST_DID, 10, 22, 40, 52
+        AUTORADIOBUTTON "A:", DID_LW_A, 20, 47, 25, 10, WS_TABSTOP
+        AUTORADIOBUTTON "B:", DID_LW_B, 20, 35, 25, 10
+        CONTROL         "", DID_LW_SPIN, 15, 41, 30, 10, WC_SPINBUTTON,
+                        SPBS_ALLCHARACTERS | SPBS_READONLY | SPBS_MASTER |
+                        SPBS_SERVANT | SPBS_JUSTDEFAULT | WS_TABSTOP
+        GROUPBOX        "Type", DID_GR_TYPE, 60, 22, 70, 52, WS_TABSTOP
+        AUTORADIOBUTTON "DD", DID_DD, 65, 54, 25, 10
+        AUTORADIOBUTTON "HD", DID_HD, 65, 44, 25, 10
+        AUTORADIOBUTTON "ED", DID_ED, 65, 34, 25, 10
+        AUTORADIOBUTTON "special", DID_SP, 65, 24, 60, 10
+        DEFPUSHBUTTON   "", DID_FORMAT, 25, 4, 90, 12, WS_GROUP
+    END
+END
+
+DLGTEMPLATE ID_OPTIONS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Options", ID_OPTIONS, 35, 40, 135, 85, WS_VISIBLE, FCF_SYSMENU |
+            FCF_TITLEBAR
+    BEGIN
+        AUTORADIOBUTTON "Standard", DID_STD, 40, 59, 60, 10
+        AUTORADIOBUTTON "Enhanced", DID_EXT, 40, 47, 60, 10
+        GROUPBOX        "Presentation", -1, 30, 41, 75, 40
+        AUTOCHECKBOX    "Check format", DID_CHECK, 30, 25, 75, 10
+        DEFPUSHBUTTON   "OK", DID_OK, 5, 7, 35, 12, WS_GROUP
+        PUSHBUTTON      "Cancel", DID_CANCEL, 48, 7, 40, 12, NOT WS_TABSTOP
+        PUSHBUTTON      "Help", DID_HELP, 95, 7, 35, 12, BS_HELP |
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP
+    END
+END
+
+DLGTEMPLATE ID_WARNING LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Warning", ID_WARNING, 12, 12, 200, 121, WS_VISIBLE,
+            FCF_TITLEBAR
+    BEGIN
+        CONTROL         "#14", DID_ICON, 10, 85, 20, 16, WC_STATIC,
+                        SS_SYSICON | WS_VISIBLE
+        LTEXT           "", DID_TEXT, 45, 57, 150, 56, DT_WORDBREAK | NOT
+                        WS_GROUP
+        PUSHBUTTON      "~OK", DID_OK, 5, 5, 40, 14, WS_GROUP
+        PUSHBUTTON      "~Cancel", DID_CANCEL, 55, 5, 40, 14, NOT WS_TABSTOP
+        PUSHBUTTON      "~Help", DID_HELP, 155, 5, 40, 14, BS_HELP |
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP
+        AUTORADIOBUTTON "format", DID_WFORMAT, 5, 45, 100, 10, WS_GROUP
+        AUTORADIOBUTTON "erase", DID_WQUICK, 5, 35, 100, 10
+        AUTORADIOBUTTON "write boot sector", DID_WBOOTS, 5, 25, 100, 10
+        AUTOCHECKBOX    "Warnings", DID_WARN, 125, 35, 70, 10, WS_GROUP
+    END
+END
+

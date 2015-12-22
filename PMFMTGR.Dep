@@ -1,0 +1,43 @@
+.\PMFMTUS.res: \
+    d:\work\c\pmformat\PMFMTUS.RC \
+    {$(INCLUDE)}pmfmtus.dlg \
+    {$(INCLUDE)}pmformat.ico \
+    {$(INCLUDE)}PMFMTHLP.H \
+    {$(INCLUDE)}PMFORMAT.H \
+    PMFMTGR.MAK
+
+.\pmformat.obj: \
+    d:\work\c\pmformat\pmformat.c \
+    {.;$(INCLUDE);}pmfmthlp.h \
+    {.;$(INCLUDE);}FORMAT.H \
+    {.;$(INCLUDE);}pmformat.h \
+    PMFMTGR.MAK
+
+.\FORMAT.obj: \
+    d:\work\c\pmformat\FORMAT.C \
+    {.;$(INCLUDE);}FORMAT.H \
+    {.;$(INCLUDE);}pmformat.h \
+    PMFMTGR.MAK
+
+.\DRVINFO.obj: \
+    d:\work\c\pmformat\DRVINFO.C \
+    {.;$(INCLUDE);}FORMAT.H \
+    {.;$(INCLUDE);}pmformat.h \
+    PMFMTGR.MAK
+
+.\DISKTHRD.obj: \
+    d:\work\c\pmformat\DISKTHRD.C \
+    {.;$(INCLUDE);}FORMAT.H \
+    {.;$(INCLUDE);}pmformat.h \
+    PMFMTGR.MAK
+
+.\PMTRACK.obj: \
+    d:\work\c\pmformat\PMTRACK.C \
+    {.;$(INCLUDE);}FORMAT.H \
+    {.;$(INCLUDE);}pmformat.h \
+    PMFMTGR.MAK
+
+.\BOOTSGR.OBJ: \
+    d:\work\c\pmformat\BOOTSECT.ASM \
+    PMFMTGR.MAK
+

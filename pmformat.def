@@ -1,0 +1,13 @@
+;-------------------------------------
+; PMFORMAT.DEF module definition file
+;-------------------------------------
+
+NAME           PMFORMAT  WINDOWAPI
+
+DESCRIPTION    '@#NB:2.13.00#@ 32Bit PM-Disk-Formatter'
+
+PROTMODE
+HEAPSIZE       32768
+STACKSIZE      65536
+EXPORTS        DialogWndProc
+

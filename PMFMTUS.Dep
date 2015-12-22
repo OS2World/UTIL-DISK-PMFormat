@@ -1,0 +1,39 @@
+.\PMFMTUS.res: \
+    d:\work\c\pmformat\PMFMTUS.RC \
+    {$(INCLUDE)}pmfmtus.dlg \
+    {$(INCLUDE)}pmformat.ico \
+    {$(INCLUDE)}PMFMTHLP.H \
+    {$(INCLUDE)}PMFORMAT.H \
+    PMFMTUS.MAK
+
+.\pmformat.obj: \
+    d:\work\c\pmformat\pmformat.c \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}FORMAT.H \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}pmformat.h \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}pmfmthlp.h \
+    PMFMTUS.MAK
+
+.\FORMAT.obj: \
+    d:\work\c\pmformat\FORMAT.C \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}FORMAT.H \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}pmformat.h \
+    PMFMTUS.MAK
+
+.\DRVINFO.obj: \
+    d:\work\c\pmformat\DRVINFO.C \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}FORMAT.H \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}pmformat.h \
+    PMFMTUS.MAK
+
+.\DISKTHRD.obj: \
+    d:\work\c\pmformat\DISKTHRD.C \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}FORMAT.H \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}pmformat.h \
+    PMFMTUS.MAK
+
+.\PMTRACK.obj: \
+    d:\work\c\pmformat\PMTRACK.C \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}FORMAT.H \
+    {d:\work\c\pmformat;d:\work\c\cutil;$(INCLUDE);}pmformat.h \
+    PMFMTUS.MAK
+
